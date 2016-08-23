@@ -1,0 +1,3 @@
+npm install express jade --save
+bower install toastr angular angular-resource jquery
+npm install stylus morgan body-parser --save
