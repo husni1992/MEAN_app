@@ -1,0 +1,23 @@
+{
+  "name": "multivision",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/husni1992/MEAN_app.git"
+  },
+  "author": "Husny Ahamed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/husni1992/MEAN_app/issues"
+  },
+  "homepage": "https://github.com/husni1992/MEAN_app#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "jade": "^1.11.0"
+  }
+}
