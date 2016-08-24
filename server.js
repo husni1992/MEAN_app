@@ -60,6 +60,7 @@ Message.findOne().exec(function(err, messageDoc){
 // all routes by *
 app.get('*', function(req,res){
    res.render('index', {
+       root: __dirname,
        outputMongoMessage: outputMongo
    }); 
 });
