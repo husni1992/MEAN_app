@@ -1,21 +1,13 @@
-    angular.module('app', ['ngResource', 'ngRoute']);
+angular.module('myAngularApp', ['ngResource', 'ngRoute']);
+
+angular.module('myAngularApp').config(function($routeProvider, $locationProvider){
+    $locationProvider.html5Mode(true);
     
-        angular
-            .module('app')
-            .config(appConfig)
-            .controller('mainCtrl', mainCtrl);
+    $routeProvider
+    .when('/', {templateUrl: '/partials/main', controller: 'mainCtrl'});
+});
+
+angular.module('myAngularApp').controller('mainCtrl', function($scope){
+    $scope.myVar = "Angular working";
+});
     
-    function appConfig($routeProvider, $locationProvider){
-        $locationProvider.html5Mode(true); 
-        
-        $routeProvider
-        .when('/test',{
-            tempaleUrl: '/views/partials/main',
-            controller: 'mainCtrl'
-        })
-    };
-    
-    function mainCtrl($scope){
-        alert('test');
-      $scope.myVar = "Hello ANgular";  
-    };
