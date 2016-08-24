@@ -2,6 +2,8 @@ npm install express jade --save
 bower install toastr angular angular-resource jquery
 npm install stylus morgan body-parser --save
 
+Download and install mongo from https://www.mongodb.com/
+
 Now run the MongoDB server
 	in command "mongoD"
 
@@ -10,3 +12,20 @@ And run "mongo" to insert data to the database
 	> use multivision
 	> db.messages.find : check the colelction(table) messages data if exists
 	> db.messages.insert({message: "Husny the GREAT"}) : this will insert the field in multivison db> messages table
+
+
+Host MongoDB
+------------
+register in 
+	https://mlab.com
+	create a database and add user
+
+and call the hosted db url in node app (db name: multivisionmean, username: husny, password: multivision)
+	mongodb://husny:multivision@ds013966.mlab.com:13966/multivisionmean
+
+connect to database and do commands locally
+	cmd> 
+	ds013966.mlab.com:13966/multivisionmean -u husny -p multivision
+
+*set node evn to production to switch between local and hosted mongodb
+	set NODE_ENV=production

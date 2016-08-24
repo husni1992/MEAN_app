@@ -4,7 +4,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-//var env = process.env.NODE_ENV = process.process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
 
@@ -36,7 +36,12 @@ app.get('/partials/:partialPath', function(req, res){
     });
 })
 
-mongoose.connect('mongodb://localhost:27017/multivision');
+if(env === 'development'){
+    mongoose.connect('mongodb://localhost:27017/multivision');
+}else{
+    mongoose.connect('mongodb://husny:multivision@ds013966.mlab.com:13966/multivisionmean');
+}
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function callback(){
@@ -58,6 +63,6 @@ app.get('*', function(req,res){
    }); 
 });
 
-var port = 3030;
+var port = process.env.PORT || 3030;
 app.listen(port);
 console.log("Listening on port: "+port);
