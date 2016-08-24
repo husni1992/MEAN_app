@@ -24,6 +24,12 @@ app.use(stylus.middleware(
     }
 ));
 app.use(express.static("./public"));
+
+
+app.use('./public/vendor', express.static(__dirname + '/js'));
+app.use('./public/css', express.static(__dirname + '/css'));
+
+
 function compile(str, path){
     return stylus(str).set('filename', path);
 };
