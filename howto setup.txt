@@ -1,3 +1,12 @@
 npm install express jade --save
 bower install toastr angular angular-resource jquery
 npm install stylus morgan body-parser --save
+
+Now run the MongoDB server
+	in command "mongoD"
+
+And run "mongo" to insert data to the database
+	> show dbs : to show all the databases available
+	> use multivision
+	> db.messages.find : check the colelction(table) messages data if exists
+	> db.messages.insert({message: "Husny the GREAT"}) : this will insert the field in multivison db> messages table

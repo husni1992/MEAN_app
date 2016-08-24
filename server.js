@@ -2,6 +2,7 @@ var express = require('express');
 var stylus = require('stylus');
 var logger = require('morgan');  
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 //var env = process.env.NODE_ENV = process.process.env.NODE_ENV || 'development';
 
@@ -10,7 +11,8 @@ var app = express();
 app.set('views', './server/views');
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
+//logs all activities in console
+//app.use(logger('dev'));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -27,14 +29,35 @@ function compile(str, path){
 };
 
 app.get('/partials/:partialPath', function(req, res){
-    res.render('partials/'+req.params.partialPath);
+    console.log('Requested: '+req.url);
+    
+    res.render('partials/'+req.params.partialPath, {
+        testMSG: outputMongo
+    });
 })
+
+mongoose.connect('mongodb://localhost:27017/multivision');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', function callback(){
+   console.log('Multivision db opened'); 
+});
+
+var messageSchema = mongoose.Schema({message: String});
+var Message = mongoose.model('Message', messageSchema);
+var outputMongo;
+Message.findOne().exec(function(err, messageDoc){
+    console.log('findOne() '+messageDoc.message);
+    outputMongo = messageDoc.message; 
+});
 
 // all routes by *
 app.get('*', function(req,res){
-   res.render('index'); 
+   res.render('index', {
+       outputMongoMessage: outputMongo
+   }); 
 });
 
 var port = 3030;
 app.listen(port);
-console.log("Listening on port "+port+"...");
+console.log("Listening on port: "+port);
