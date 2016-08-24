@@ -26,8 +26,9 @@ app.use(stylus.middleware(
 app.use(express.static("./public"));
 
 
-app.use('./public/vendor', express.static(__dirname + '/js'));
-app.use('./public/css', express.static(__dirname + '/css'));
+app.use('/js', express.static(__dirname + '/js'));
+app.use('/bower_components', express.static(__dirname + '/../bower_components'));
+app.use('/css', express.static(__dirname + '/css'));
 
 
 function compile(str, path){
