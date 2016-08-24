@@ -8,7 +8,8 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
 
-app.set('views', './server/views');
+
+app.set('views', __dirname+'/server/views');
 app.set('view engine', 'jade');
 
 //logs all activities in console
@@ -19,18 +20,11 @@ app.use(bodyParser.json());
 
 app.use(stylus.middleware(
     {
-        src: "./public",
+        src: __dirname+"/public",
         compile: compile
     }
 ));
-app.use(express.static("./public"));
-
-
-app.use('/js', express.static(__dirname + '/js'));
-app.use('/bower_components', express.static(__dirname + '/../bower_components'));
-app.use('/css', express.static(__dirname + '/css'));
-
-
+app.use(express.static(__dirname+"/public"));
 function compile(str, path){
     return stylus(str).set('filename', path);
 };
