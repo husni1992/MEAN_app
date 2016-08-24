@@ -1,0 +1,23 @@
+heroku
+mgha123@gmail.com
+rebotco123
+
+login and create heroku app
+-----------------------------
+heroku login
+username
+password
+
+then type
+	heroku create: this will create the app with conencting the github
+check it worked?
+	git remote -v
+
+set heroku config to set NODE_ENV to production
+	heroku config:set NODE_ENV=production
+
+push to heroku
+	got push heroku master
+
+allocate some resources for our heroku app
+	heroku ps:scale web=1
