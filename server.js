@@ -32,9 +32,7 @@ function compile(str, path){
 app.get('/partials/:partialPath', function(req, res){
     console.log('Requested: '+req.url);
     
-    res.render('partials/'+req.params.partialPath, {
-        testMSG: outputMongo
-    });
+    res.render('partials/'+req.params.partialPath);
 })
 
 if(env === 'development'){
@@ -49,20 +47,17 @@ db.once('open', function callback(){
    console.log('Multivision db opened'); 
 });
 
-var messageSchema = mongoose.Schema({message: String});
-var Message = mongoose.model('Message', messageSchema);
-var outputMongo;
-Message.findOne().exec(function(err, messageDoc){
-    console.log('findOne() '+messageDoc.message);
-    outputMongo = messageDoc.message; 
-});
+//var messageSchema = mongoose.Schema({message: String});
+//var Message = mongoose.model('Message', messageSchema);
+//var outputMongo;
+//Message.findOne().exec(function(err, messageDoc){
+//    console.log('findOne() '+messageDoc.message);
+//    outputMongo = messageDoc.message; 
+//});
 
 // all routes by *
 app.get('*', function(req,res){
-   res.render('index', {
-       root: __dirname,
-       outputMongoMessage: outputMongo
-   }); 
+   res.render('index'); 
 });
 
 var port = process.env.PORT || 3030;

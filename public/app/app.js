@@ -7,7 +7,4 @@ angular.module('myAngularApp').config(function($routeProvider, $locationProvider
     .when('/', {templateUrl: '/partials/main', controller: 'mainCtrl'});
 });
 
-angular.module('myAngularApp').controller('mainCtrl', function($scope){
-    $scope.myVar = "Angular working";
-});
-    
+

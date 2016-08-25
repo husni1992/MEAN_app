@@ -1,5 +1,12 @@
-h1 This is a partial
-h2 {{myVar}}
-hr
-h3 Mongo below: 
-h3=testMSG
+.container
+    .jumbotron
+        h1 Multivision
+        p Welcome to the Multivision!
+
+
+    .row
+        .col-md-6
+            div(ng-include="'/partials/featured-courses'")
+        .col-md-6
+            div(ng-include="'/partials/new-courses'")
+

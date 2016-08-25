@@ -1,5 +1,16 @@
 extends ../includes/layout
 
 block main-content
+    .navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+           a.navabr-brand(href="/") Multivision
+              h6 -Extreme JS works
+        .navbar-collapse.collapse
+           ul.nav.navbar-nav
+              li
+                 a(href="/") Home
     section.content
         div(ng-view)
+    footer.container.text-center
+        p &copy; 2013 Multivision Corp International Ltd.

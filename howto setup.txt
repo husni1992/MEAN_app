@@ -29,3 +29,24 @@ connect to database and do commands locally
 
 *set node evn to production to switch between local and hosted mongodb
 	set NODE_ENV=production
+
+Host in heroku
+----------------
+*open package.json and add engines{}, check the versions of the app and do this
+    "engines": {
+        "node": "6.2.x",
+        "npm": "3.10.x"
+    },
+*Create "Procfile" without extensions
+	web: node server.js > this is the command to running the app in cmd
+* git commit and push the directory
+
+*cmd> heroku login > enter username and password
+heroku create : this will create a app in your heroku account
+push app to heroku:
+	make sure everything is commited and pushed to git. And then type
+	git push heroku master
+*allocate resources to heroku app:
+	heroku ps:scale web=1
+now run: 
+	
